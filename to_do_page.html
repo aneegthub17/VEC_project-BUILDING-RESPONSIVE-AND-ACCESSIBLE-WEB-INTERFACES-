@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <title>Favorite Recipes</title>
+</head>
+<body>
+    <div style="text-align: right; margin: 20px 0;">
+        <div class="foodreturntorecipe">  
+            <a href="recipe.html" class="home-button">Return to Home Page</a>
+        </div>
+    </div>
+    <div class="foodiefav">
+        <h2>Your Cart Consists following Recipes</h2>
+        <div id="favorite-recipes">
+            <!-- Favorite recipes will be displayed here -->
+        </div>
+        <button id="clear-all" class="clear-all-button">Clear All</button>
+    </div>
+    <div class="footer" style="position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.8); color: #fff; text-align: center; padding: 10px 0; box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5); font-family: Arial, sans-serif;">
+        <p>&copy; 2025 Recipe Book. All rights reserved.</p>
+        <p>Designed by Aneesh, Pranjali, Prapthi, and Janani</p>
+        <marquee behavior="scroll" direction="left" scrollamount="10" style="color: #ffcc00; font-size: 1.2em; font-weight: bold; text-shadow: 0 2px 5px rgba(255, 204, 0, 0.7);">Happy cooking!</marquee>
+    </div>
+
+    <script>
+        // Retrieve favorites from localStorage
+        const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+        const favoriteRecipesDiv = document.getElementById("favorite-recipes");
+
+        if (favorites.length > 0) {
+            favorites.forEach((recipe, index) => {
+                const recipeElement = document.createElement("div");
+                recipeElement.className = "recipe-item";
+                recipeElement.innerHTML = `
+                    <span>${recipe}</span>
+                    <button class="delete-button" onclick="removeFromFavorites(${index})">Delete</button>
+                `;
+                favoriteRecipesDiv.appendChild(recipeElement);
+            });
+        } else {
+            favoriteRecipesDiv.textContent = "No favorite recipes yet!";
+        }
+
+        // Function to remove a recipe from favorites
+        function removeFromFavorites(index) {
+            favorites.splice(index, 1); // Remove the recipe at the given index
+            localStorage.setItem("favorites", JSON.stringify(favorites)); // Update localStorage
+            location.reload(); // Reload the page to reflect changes
+        }
+
+        // Function to clear all favorites
+        const clearAllButton = document.getElementById("clear-all");
+        clearAllButton.addEventListener("click", () => {
+            if (confirm("Are you sure you want to clear all favorite recipes?")) {
+                localStorage.removeItem("favorites"); // Remove all favorites from localStorage
+                location.reload(); // Reload the page to reflect changes
+            }
+        });
+    </script>
+</body>
+</html>

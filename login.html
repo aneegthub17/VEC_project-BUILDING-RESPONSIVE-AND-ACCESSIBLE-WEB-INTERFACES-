@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login / Sign Up</title>
+    <style>
+        /* Background styling */
+        body {
+            background-image: url('imgs/1699772351263.jpg'); /* Replace with the correct path to your image */
+            background-size: cover; /* Ensures the image covers the entire background */
+            background-repeat: no-repeat; /* Prevents the image from repeating */
+            background-position: center; /* Centers the image */
+            font-family: Arial, sans-serif; /* Modern font */
+            margin: 0;
+            padding: 0;
+            color: #fff; /* White text for contrast */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Full viewport height */
+        }
+
+        /* Container styling */
+        .login-container, .signup-container {
+            background: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+            padding: 30px;
+            border-radius: 15px; /* Smooth rounded corners */
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+            width: 350px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2em;
+            color: #ffcc00; /* Golden color for headings */
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.7); /* Glowing effect */
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            text-align: left;
+            color: #fff; /* White text for labels */
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: linear-gradient(45deg, #ff6600, #ffcc00); /* Gradient orange background */
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(45deg, #ffcc00, #ff6600); /* Reverse gradient on hover */
+            transform: scale(1.05); /* Slightly enlarge on hover */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Enhance shadow on hover */
+        }
+
+        a {
+            color: #ffcc00; /* Golden color for links */
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        p {
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login</h2>
+        <form id="login-form">
+            <label for="login-username">Username:</label>
+            <input type="text" id="login-username" required>
+            <label for="login-password">Password:</label>
+            <input type="password" id="login-password" required>
+            <button type="submit" class="login-button">Login</button>
+        </form>
+        <p>New user? <a href="#" id="show-signup">Sign Up</a></p>
+    </div>
+
+    <div class="signup-container" style="display: none;">
+        <h2>Sign Up</h2>
+        <form id="signup-form">
+            <label for="signup-username">Username:</label>
+            <input type="text" id="signup-username" required>
+            <label for="signup-password">Password:</label>
+            <input type="password" id="signup-password" required>
+            <button type="submit" class="signup-button">Sign Up</button>
+        </form>
+        <p>Already have an account? <a href="#" id="show-login">Login</a></p>
+    </div>
+    <div class="footer" style="position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.8); color: #fff; text-align: center; padding: 10px 0; box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5); font-family: Arial, sans-serif;">
+        <p>&copy; 2025 Recipe Book. All rights reserved.</p>
+        <p>Designed by Aneesh, Pranjali, Prapthi, and Janani</p>
+        <marquee behavior="scroll" direction="left" scrollamount="10" style="color: #ffcc00; font-size: 1.2em; font-weight: bold; text-shadow: 0 2px 5px rgba(255, 204, 0, 0.7);">Happy cooking!</marquee>
+    </div>
+
+    <script>
+        // Show Sign-Up Form
+        document.getElementById("show-signup").addEventListener("click", (e) => {
+            e.preventDefault();
+            document.querySelector(".login-container").style.display = "none";
+            document.querySelector(".signup-container").style.display = "block";
+        });
+
+        // Show Login Form
+        document.getElementById("show-login").addEventListener("click", (e) => {
+            e.preventDefault();
+            document.querySelector(".signup-container").style.display = "none";
+            document.querySelector(".login-container").style.display = "block";
+        });
+
+        // Handle Sign-Up
+        document.getElementById("signup-form").addEventListener("submit", (e) => {
+            e.preventDefault();
+            const username = document.getElementById("signup-username").value;
+            const password = document.getElementById("signup-password").value;
+
+            // Check if user already exists
+            const users = JSON.parse(localStorage.getItem("users")) || [];
+            if (users.some(user => user.username === username)) {
+                alert("Username already exists. Please choose a different username.");
+                return;
+            }
+
+            // Save new user to localStorage
+            users.push({ username, password });
+            localStorage.setItem("users", JSON.stringify(users));
+            alert("Sign-up successful! Please log in.");
+            document.getElementById("show-login").click(); // Switch to login form
+        });
+
+        // Handle Login
+        document.getElementById("login-form").addEventListener("submit", (e) => {
+            e.preventDefault();
+            const username = document.getElementById("login-username").value;
+            const password = document.getElementById("login-password").value;
+
+            // Validate user credentials
+            const users = JSON.parse(localStorage.getItem("users")) || [];
+            const user = users.find(user => user.username === username && user.password === password);
+
+            if (user) {
+                alert("Login successful!");
+                window.location.href = "recipe.html"; // Redirect to the favorite recipes page
+            } else {
+                alert("Invalid username or password. Please try again.");
+            }
+        });
+    </script>
+</body>
+</html>
