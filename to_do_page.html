@@ -14,7 +14,7 @@
         </div>
     </div>
     <div class="foodiefav">
-        <h2>Your Cart Consists following Recipes</h2>
+        <h2>Your Cart Consists of the Following Recipes</h2>
         <div id="favorite-recipes">
             <!-- Favorite recipes will be displayed here -->
         </div>
@@ -35,10 +35,15 @@
             favorites.forEach((recipe, index) => {
                 const recipeElement = document.createElement("div");
                 recipeElement.className = "recipe-item";
+
+                // Create a clickable link for each recipe
                 recipeElement.innerHTML = `
-                    <span>${recipe}</span>
+                    <a href="${getRecipePage(recipe)}" style="text-decoration: none; color: inherit;">
+                        <span>${recipe}</span>
+                    </a>
                     <button class="delete-button" onclick="removeFromFavorites(${index})">Delete</button>
                 `;
+
                 favoriteRecipesDiv.appendChild(recipeElement);
             });
         } else {
@@ -60,42 +65,24 @@
                 location.reload(); // Reload the page to reflect changes
             }
         });
-        if (favorites.length > 0) {
-    favorites.forEach((recipe, index) => {
-        const recipeElement = document.createElement("div");
-        recipeElement.className = "recipe-item";
 
-        // Create a clickable link for each recipe
-        recipeElement.innerHTML = `
-            <a href="${getRecipePage(recipe)}" style="text-decoration: none; color: inherit;">
-                <span>${recipe}</span>
-            </a>
-            <button class="delete-button" onclick="removeFromFavorites(${index})">Delete</button>
-        `;
+        // Function to map recipe names to their respective pages
+        function getRecipePage(recipeName) {
+            const recipePages = {
+                "Avocado Toast": "breakfast.html", // Redirect to breakfast page
+                "Vegetable Upma": "breakfast.html", // Redirect to breakfast page
+                "Pancakes": "breakfast.html", // Redirect to breakfast page
+                "Grilled Chicken Salad": "lunch.html", // Redirect to lunch page
+                "Vegetable Stir Fry": "lunch.html", // Redirect to lunch page
+                "Spaghetti Bolognese": "dinner.html", // Redirect to dinner page
+                "Grilled Salmon": "dinner.html", // Redirect to dinner page
+                "Smoothie Bowl": "beverages.html", // Redirect to beverages page
+                "Iced Coffee": "beverages.html" // Redirect to beverages page
+                // Add more recipes and their corresponding pages here
+            };
 
-        favoriteRecipesDiv.appendChild(recipeElement);
-    });
-} else {
-    favoriteRecipesDiv.textContent = "No favorite recipes yet!";
-}
-
-// Function to map recipe names to their respective pages
-function getRecipePage(recipeName) {
-    const recipePages = {
-        "Avocado Toast": "breakfast.html", // Redirect to breakfast page
-        "Vegetable Upma": "breakfast.html", // Redirect to breakfast page
-        "Pancakes": "breakfast.html", // Redirect to breakfast page
-        "Grilled Chicken Salad": "lunch.html", // Redirect to lunch page
-        "Vegetable Stir Fry": "lunch.html", // Redirect to lunch page
-        "Spaghetti Bolognese": "dinner.html", // Redirect to dinner page
-        "Grilled Salmon": "dinner.html", // Redirect to dinner page
-        "Smoothie Bowl": "beverages.html", // Redirect to beverages page
-        "Iced Coffee": "beverages.html" // Redirect to beverages page
-        // Add more recipes and their corresponding pages here
-    };
-
-    return recipePages[recipeName] || "#"; // Default to "#" if no page is found
-}
+            return recipePages[recipeName] || "#"; // Default to "#" if no page is found
+        }
     </script>
 </body>
 </html>
