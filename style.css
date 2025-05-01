@@ -94,31 +94,67 @@
     
     .recipe-text {
         flex: 1; 
-        color: #f9f9f9;/* Allows the text to take up the remaining space */
+        color: gray;/* Allows the text to take up the remaining space */
     }
     
     .recipe-text h2 {
         margin-top: 0;
         font-size: 1.8em;
-        color: #656356;
+        color: orange;
         text-shadow: none; /* Highlight the recipe name */
     }
     
     .recipe-text p {
         margin: 10px 0;
         font-size: 1.1em;
-        color: #ff6600;
+        color: orange;
     }
     
     .recipe-text ul, .recipe-text ol {
-        margin: 10px 0;
+        margin-bottom: 10px;
         padding-left: 20px;
     }
     
     .recipe-text li {
         margin-bottom: 5px;
-        color: rgb(252, 249, 249);
     }
+
+    .recipe-text ul,ol {
+        list-style: none;  
+    }
+    
+    .recipe-text ul li input[type="checkbox"]{
+        accent-color: orange;
+        margin-right: 10px;
+    }
+    
+    .recipe-text ol {
+        counter-reset: step-counter;
+    }
+    
+    .recipe-text ol li{
+        counter-increment: step-counter;
+        position: relative;
+        margin-bottom: 10px;
+        padding-left: 30px;
+    }
+    
+    .recipe-text ol li::before {
+        content: counter(step-counter);
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 24px;
+        height: 24px;
+        background-color: orange;
+        color: white;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 23px;
+        font-weight: bold;
+        font-size: 14px;
+    }
+    
     .foodreturntorecipe{
         background-color: rgba(14, 14, 14, 0.817);
         box-shadow: 0 0 10px rgba(1, 1, 1, 0.726);
