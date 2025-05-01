@@ -20,7 +20,7 @@
         </div>
         <button id="clear-all" class="clear-all-button">Clear All</button>
     </div>
-    <div class="footer" style="position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.8); color: #fff; text-align: center; padding: 10px 0; box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5); font-family: Arial, sans-serif;">
+    <div class="footer" style="position: fixed; bottom: 1px; left: 0; width: 100%; background: rgba(0, 0, 0, 0.8); color: #fff; text-align: center; padding: 10px 0; box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5); font-family: Arial, sans-serif;">
         <p>&copy; 2025 Recipe Book. All rights reserved.</p>
         <p>Designed by Aneesh, Pranjali, Prapthi, and Janani</p>
         <marquee behavior="scroll" direction="left" scrollamount="10" style="color: #ffcc00; font-size: 1.2em; font-weight: bold; text-shadow: 0 2px 5px rgba(255, 204, 0, 0.7);">Happy cooking!</marquee>
@@ -69,16 +69,34 @@
         // Function to map recipe names to their respective pages
         function getRecipePage(recipeName) {
             const recipePages = {
-                "Avocado Toast": "breakfast.html", // Redirect to breakfast page
-                "Vegetable Upma": "breakfast.html", // Redirect to breakfast page
-                "Pancakes": "breakfast.html", // Redirect to breakfast page
-                "Grilled Chicken Salad": "lunch.html", // Redirect to lunch page
-                "Vegetable Stir Fry": "lunch.html", // Redirect to lunch page
-                "Spaghetti Bolognese": "dinner.html", // Redirect to dinner page
-                "Grilled Salmon": "dinner.html", // Redirect to dinner page
-                "Smoothie Bowl": "beverages.html", // Redirect to beverages page
-                "Iced Coffee": "beverages.html" // Redirect to beverages page
-                // Add more recipes and their corresponding pages here
+            // Breakfast Recipes
+            "Avocado Toast": "breakfast.html",
+            "Vegetable Upma": "breakfast.html",
+            "Smoothie Bowl": "breakfast.html",
+            "Moong Dal Chilla": "breakfast.html",
+            "Oats Porridge": "breakfast.html",
+            "Vegetable Poha": "breakfast.html",
+
+            // Lunch Recipes
+            "Vegetable Stir Fry with Rice": "lunch.html",
+            "Chickpea Salad": "lunch.html",
+            "Vegetable Pulao": "lunch.html",
+            "Dal Tadka": "lunch.html",
+            "Quinoa Salad": "lunch.html",
+
+            // Dinner Recipes
+            "Palak Paratha": "dinner.html",
+            "Coconut Roti": "dinner.html",
+            "Garlic Naan": "dinner.html",
+            "Cauliflower Methi Rice": "dinner.html",
+            "Coconut & Cauliflower Rice": "dinner.html",
+
+            // Beverages Recipes
+            "Bulletproof Coffee": "beverages.html",
+            "Coconut Milk Coffee": "beverages.html",
+            "Amla Juice": "beverages.html",
+            "Avocado Strawberry Smoothie": "beverages.html",
+            "Berries Spinach Smoothie": "beverages.html",
             };
 
             return recipePages[recipeName] || "#"; // Default to "#" if no page is found
