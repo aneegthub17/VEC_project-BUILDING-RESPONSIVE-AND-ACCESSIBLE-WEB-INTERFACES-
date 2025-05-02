@@ -30,3 +30,50 @@
 
 ## 📂 Folder Structure
 
+---
+
+## 👨‍💻 Technologies Used
+
+- HTML5
+- CSS3 (with gradients, shadows, transitions)
+- JavaScript (LocalStorage-based interactivity)
+- Responsive Design Principles
+- Accessibility Tags and Keyboard Navigation Support
+
+---
+
+## 📸 Screenshots
+
+| Home Page | Recipe Page | Favorites Page |
+|----------|-------------|----------------|
+| ![Home](imgs/screenshot-home.png) | ![Recipe](imgs/screenshot-recipe.png) | ![Fav](imgs/screenshot-fav.png) |
+
+> _You can replace these with actual screenshots of your project._
+
+---
+
+## 👥 Team Members
+
+- **Aneesh** – Full Stack Development
+- **Pranjali** – Styling & Revision
+- **Prapthi** – Recipe Research & Nutrition Analysis
+- **Janani** – Content Review & QA
+
+---
+
+## 📜 License
+
+This project is created for educational purposes as part of the AD2551-1 course curriculum.  
+Free to use with attribution.
+
+---
+
+## ✨ Acknowledgement
+
+Special thanks to our faculty mentors for guiding us throughout this project and inspiring us to build something meaningful for diabetic wellness.
+
+---
+
+> 🍽️ “Let food be thy medicine and medicine be thy food.” — Hippocrates
+
+
