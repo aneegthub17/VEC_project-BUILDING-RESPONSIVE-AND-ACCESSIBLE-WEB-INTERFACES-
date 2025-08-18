@@ -54,9 +54,9 @@
 
 ## 👥 Team Members
 
-- **Aneesh** – Full Stack Development
-- **Pranjali** – Styling & Revision
-- **Prapthi** – Recipe Research & Nutrition Analysis
+- **Aneesh** – Front-end Development & Content Review
+- **Pranjali** – Front-end Development & Revision of recipe- 
+-  **Prapthi** – Front-end Development & Nutrition Analysis
 - **Janani** – Content Review & QA
 
 ---
